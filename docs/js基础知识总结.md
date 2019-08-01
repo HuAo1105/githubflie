@@ -236,6 +236,38 @@ var res1 = arr.findIndex(function (item) {
 console.log(res1);  
 ```
 
+### 清空数组
+
+```js
+var arr = [10, 10, 10];
+  // console.log(arr, arr.length);
+  arr.length = 0;
+
+  console.log(arr);
+```
+
+### 匿名函数
+
+* 自调用函数（自执行函数）：匿名函数的另外一种使用方法；很多时候，我们需要加载页面后，自动执行一个函数
+
+```js
+(function(){  
+  console.log(10);  
+})();
+```
+
+* 匿名函数：没有名字的函数，但是在js的语法中，是不允许匿名函数单独存在的，要配合其它语法使用：
+
+```js
+function (参数){
+  函数体
+}
+
+var fn = function(a,b){
+  return a + b;
+}
+```
+
 
 
 
