@@ -93,6 +93,9 @@ classList.toggle("")切换类名
 
 ### TagName和 ByClassName
 
+* 循环时不能用foreach，他俩没有这个用法。
+
+
 * TagName：获取标签名
 
 ```js
@@ -127,6 +130,13 @@ img.src= this.dataset.src;
 
 * 开关属性： checked/selected/disabled ，这种只有两种状态的属性
 * 赋值：两个状态的值，布尔类型；
+* disabled 禁用
+
+```js
+用法：btn.disabled = true;
+```
+
+
 
 ## 易错点
 
