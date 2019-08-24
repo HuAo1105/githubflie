@@ -18,7 +18,9 @@ li.innerText = '内容';
 ## 通过节点的获取
 
 ```js
-ul.children[0]
+var first = ul.children[0];
+ul.insetBefore(li,first);
+把新创建的li插入到第一位，首先要获取ul里的第一个
 ```
 
 ## 添加节点

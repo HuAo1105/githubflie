@@ -1,3 +1,12 @@
+### js对象
+
+* 引用类型
+  * object、array、date、RegExp、Function
+* 基本包装类型
+  * boolean、number、string
+* 内置对象
+  * Global、Math
+
 ### js操作符
 
 * 比较操作符 优先级高于 赋值操作符
@@ -10,6 +19,71 @@
   * 返回：把最后一个满足的结果，返回过来；
   * 返回：当遇见不满足情况，直接就把不满足结果返回；
   * 遇见：非Boolean值；转换为布尔值参与逻辑判断，返回最后那个是true判断的结果
+
+#### 算术操作符
+
+* 返回：就是数字类型计算的结果
+
+```js
+// +  -  *  /  % 
+// ++ --
+```
+
+##### 字符串+
+
+- **字符串+**：与字符串临近的类型，转为字符串；里面存在一个**隐式转化**；看不到的转化；
+- 隐式转化：在字符串+情况下，数字隐转为字符串；
+- 情况：
+  - 字符串 + ；
+  - +字符串;
+
+##### 字符串 其他
+
+- 字符串遇见 * / -；
+- 隐式转化：字符串会转为数字，再次参加运算；
+
+#### 比较操作符
+
+- 语法：比较两个值的大小，**常规比较就是数字**
+- 返回：**比较后的结果，对或错，Boolean值；标示状态成立与否；**
+
+```js
+// 语法：>  <  >=  <=
+```
+
+`==` 和 `===`区别：
+
+- `==` 
+  - **同类型：比较值是否一样；特别NaN==NaN  false**
+  - **不同类型：转为数字类型，看值是否一样；**
+- `===` 
+  - **同类型：再看值；**
+  - **不同类型：false**;
+
+#### 逻辑操作符
+
+* 语法：&&  ||  ！
+* &&且：所有条件都要满足的情况下;
+
+```js
+true&&true  //true;
+true&&false    //false;
+
+1&&2   // 2;
+```
+
+* 特点：遇见有一个false，那么就直接返回false;
+
+```js
+// 用户在登录的时候要用户名和密码同时正确才能登录
+var userName = prompt('请输入用户名');
+var password = prompt('请输出密码');
+console.log(userName === 'admin' && password === '123456');
+// 只有 && 两边的 结果都是 true ，最终结果返回最后一个成立的结果；
+```
+
+* `||` 或：只要你有满足
+  * 特点：只有有一个true，那么就直接返回是true的这个结果;
 
 ### continue和break
 
@@ -40,13 +114,13 @@
   obj.say_name = function() {
     console.log(obj.name);
 }
-2、//声明方式：键值对的方式声明；
+2、// 声明方式：键值对的方式声明；
   // 语法：对象["属性名"]  = 属性值；
   obj["name"] = "狗蛋";
   obj["age"] = 45;
 ```
 
-### 对象-获取及遍历属
+### 对象-获取及遍历
 
 ```js
 // key：泛指 代表 对象上的每对键值对的 键；
@@ -58,9 +132,9 @@
     // 把obj.key 这个key 当做一个属性名；
     // console.log(obj.key);
 
-    // ["属性名"]
+    // ["属性名"]，只能通过键值对的方式获取值
     // console.log(obj[key]);
-
+ 	
     console.log(key, obj[key]);
 
   }
@@ -87,7 +161,7 @@ slice可以设置负数，谁为负数，谁就和数组的长度相加得到该
 - 写法1：arr.slice(1,4)
 
 
-- 截取，包左边不包右,也就是知道3；
+- 截取，包左边不包右,也就是只到3；
 - 不对原数组进行操作，返回的是新数组；
 - 写法2：arr.slice(1);
   - 一直截取到倒数第二位
@@ -124,12 +198,33 @@ console.log(arr);
 
 * 四舍五入
 
-#### 数组的复制
+### 数组类型
+
+* 类型为object
+
+### 数组的复制
 
 - 使用foreach遍历数组，再push给新数组
 - 使用filter返回true
 - slice（）截取，一直截取到最后，返回的是新数组
 - concat() 进行拼接，返回的是新数组
+
+```js
+var new_arr = [];
+arr.forEach(function(item,index,arr){
+  new_arr.push(item)
+});
+
+var new_arr = arr.filter(function(item,index,arr){
+  return item;
+});
+
+var new_arr = arr.concat();
+
+var new_arr = arr.slice();
+```
+
+
 
 ### Array-与字符串互转
 
@@ -170,7 +265,6 @@ var arr = [1, 2, 3];
 
 ```js
 `${},${}`:字符串拼接
-
 
 ```
 
@@ -227,14 +321,29 @@ arr_1.forEach(function(item,index,arr){
 
 ### 查找元素
 
+#### findIndex和filter
+
+* filter 筛选出数组中满足条件的数组，**返回是一个新的数组；**
+* findIndex 方法用于查找满足条件的第一个元素的索引，如果没有，则返回-1;若满足条件，返回第一个元素的的索引;
+
 ```js
 var arr = [10, 20, 30];
 var res1 = arr.findIndex(function (item) {
   return item >= 20;
 });
 // 返回 满足条件的第一个元素的的索引
-console.log(res1);  
+console.log(res1); 
 ```
+
+```js
+var arr_1 = [1500,1800,2200,300,2600,800];
+var res = arr_1.filter(function(item,index,arr){
+  return item < 2000;
+});
+// fitler方法的的参数要求是一个函数，这个函数接收2个参数：item是数组中的每个元素，index是item对应的索引,arr代表当前的数组
+```
+
+
 
 ### 清空数组
 
