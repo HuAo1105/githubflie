@@ -483,7 +483,7 @@ $.get('/api/member-list-last', {last: null}, function (res) {
 
 
 
-confirm提示框，是window的一个方法，返回值是布尔值，点击确返回true，点击取消返回false。
+confirm提示框，是window的一个方法，返回值是布尔值，点击确认返回true，点击取消返回false。
 
 > 在用户点击确定按钮或取消按钮把对话框关闭之前，它将阻止用户对浏览器的所有输入。在调用 confirm() 时，将暂停对 JavaScript 代码的执行，在用户作出响应之前，不会执行下一条语句
 
@@ -517,7 +517,7 @@ var id = location.search;// ?id=478
 
 
 
-
+formdata提交的时候，是标签的name属性，以post的方式发送请求的时候要加上**processData：false**和**contentType:false**
 
 
 
